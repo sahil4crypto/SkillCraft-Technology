@@ -9,14 +9,12 @@
 </head>
 <body>
 
-  <!-- =========================================
-       TASK 01 - INTERACTIVE RESPONSIVE NAVIGATION
-       ========================================= -->
+  
   <header id="navbar-header">
     <div class="container navbar">
       <a href="#home" class="logo">SkillCraft Technology</a>
       
-      <!-- Hamburger Menu Button for Mobile -->
+      
       <div class="menu-btn" id="menu-btn">
         <span></span>
         <span></span>
@@ -33,9 +31,7 @@
     </div>
   </header>
 
-  <!-- =========================================
-       HERO LANDING PAGE (Part of Task 01)
-       ========================================= -->
+  
   <section id="home">
     <div class="container">
       <div class="hero-box">
@@ -60,9 +56,7 @@
     </div>
   </section>
 
-  <!-- =========================================
-       TASK 02 - STOPWATCH WEB APPLICATION
-       ========================================= -->
+  
   <section id="stopwatch" class="section">
     <div class="container">
       <div class="section-header">
@@ -72,10 +66,10 @@
 
       <div class="app-card">
         <div class="stopwatch-wrapper">
-          <!-- Time Display -->
+          
           <div class="time-display" id="stopwatch-display">00:00:00.00</div>
 
-          <!-- Buttons -->
+          
           <div class="control-buttons">
             <button class="btn btn-primary" id="stopwatch-start">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -91,10 +85,10 @@
             </button>
           </div>
 
-          <!-- Laps Section -->
+          
           <div class="lap-section" id="lap-section" style="display: none;">
             <ul class="lap-list" id="lap-list">
-              <!-- Lap items injected by JavaScript -->
+             
             </ul>
           </div>
         </div>
@@ -102,9 +96,7 @@
     </div>
   </section>
 
-  <!-- =========================================
-       TASK 03 - TIC-TAC-TOE GAME
-       ========================================= -->
+  
   <section id="tic-tac-toe" class="section">
     <div class="container">
       <div class="section-header">
@@ -113,7 +105,7 @@
       </div>
 
       <div class="app-card">
-        <!-- Game Configuration -->
+        
         <div class="game-controls">
           <select id="game-mode" class="mode-select">
             <option value="friend">Player vs Player</option>
@@ -125,7 +117,7 @@
           </select>
         </div>
 
-        <!-- Scoreboard -->
+       
         <div class="scoreboard">
           <div class="score-box">
             <div class="score-label">Player X</div>
@@ -141,10 +133,10 @@
           </div>
         </div>
 
-        <!-- Game Info Status -->
+       
         <div class="status-text" id="game-status">Player X's turn</div>
 
-        <!-- Game Board Grid -->
+        
         <div class="game-board" id="game-board">
           <div class="cell" data-index="0"></div>
           <div class="cell" data-index="1"></div>
@@ -157,7 +149,7 @@
           <div class="cell" data-index="8"></div>
         </div>
 
-        <!-- Game Actions -->
+        
         <div class="game-actions">
           <button class="btn btn-outline" id="game-reset">Reset Board</button>
         </div>
@@ -165,9 +157,7 @@
     </div>
   </section>
 
-  <!-- =========================================
-       TASK 04 - TO-DO WEB APPLICATION
-       ========================================= -->
+ 
   <section id="todo" class="section">
     <div class="container">
       <div class="section-header">
@@ -176,7 +166,7 @@
       </div>
 
       <div class="app-card">
-        <!-- Add Task Form -->
+        
         <form class="todo-form" id="todo-form" onsubmit="return false;">
           <input type="text" class="todo-input" id="todo-title" placeholder="Add a new task..." required autocomplete="off">
           
@@ -189,24 +179,22 @@
           </div>
         </form>
 
-        <!-- Filters -->
+        
         <div class="todo-filters">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="active">Active</button>
           <button class="filter-btn" data-filter="completed">Completed</button>
         </div>
 
-        <!-- Tasks list -->
+        
         <ul class="todo-list" id="todo-list">
-          <!-- Dynamically populated tasks -->
+         
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- =========================================
-       FOOTER
-       ========================================= -->
+  
   <footer>
     <div class="container">
       <p>&copy; 2026 SkillCraft Technology Internship. Code designed with minimal vanilla syntax.</p>
