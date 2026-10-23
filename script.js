@@ -1,26 +1,13 @@
-/* 
-  =========================================
-  SCT PROJECTS HUB - MAIN JAVASCRIPT FILE
-  =========================================
-  This script contains all interactive features for Tasks 1 to 4:
-  1. Interactive Navigation Menu (Task 01)
-  2. Stopwatch Logic (Task 02)
-  3. Tic-Tac-Toe Game Logic + AI (Task 03)
-  4. To-Do List Application with LocalStorage (Task 04)
-*/
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* =========================================
-     TASK 01: NAVIGATION & INTERACTIVE STYLING
-     ========================================= */
+ 
   const header = document.getElementById('navbar-header');
   const menuBtn = document.getElementById('menu-btn');
   const navLinksList = document.getElementById('nav-links');
   const navItems = document.querySelectorAll('.nav-item');
   const sections = document.querySelectorAll('section');
 
-  // Change nav background on page scroll
+  
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       header.classList.add('scrolled');
@@ -28,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
 
-    // Dynamic active tab highlighting based on current scroll position
+    
     let currentSectionId = 'home';
     sections.forEach(sec => {
       const top = sec.offsetTop - 120;
@@ -46,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mobile Hamburger menu toggle
+  
   menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('open');
     navLinksList.classList.toggle('active');
   });
 
-  // Close mobile nav menu when a link is clicked
+  
   navItems.forEach(item => {
     item.addEventListener('click', () => {
       menuBtn.classList.remove('open');
@@ -61,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* =========================================
-     TASK 02: STOPWATCH WEB APPLICATION
-     ========================================= */
+ 
   const swDisplay = document.getElementById('stopwatch-display');
   const swStartBtn = document.getElementById('stopwatch-start');
   const swLapBtn = document.getElementById('stopwatch-lap');
@@ -95,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   swStartBtn.addEventListener('click', () => {
     if (!isStopwatchRunning) {
-      // START the stopwatch
+     
       isStopwatchRunning = true;
       stopwatchStartTime = Date.now();
       stopwatchTimer = setInterval(updateStopwatchDisplay, 10);
@@ -105,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
       swStartBtn.classList.remove('btn-primary');
       swLapBtn.disabled = false;
     } else {
-      // PAUSE the stopwatch
+    
       isStopwatchRunning = false;
       clearInterval(stopwatchTimer);
       stopwatchElapsedTime += (Date.now() - stopwatchStartTime);
@@ -122,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentLapTime = stopwatchElapsedTime + (Date.now() - stopwatchStartTime);
       laps.push(currentLapTime);
       
-      // Render Laps list
+      
       lapSection.style.display = 'block';
       const lapItem = document.createElement('li');
       lapItem.className = 'lap-item';
@@ -132,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       lapList.appendChild(lapItem);
       
-      // Auto-scroll to bottom of lap history
+      
       lapSection.scrollTop = lapSection.scrollHeight;
     }
   });
@@ -154,9 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  /* =========================================
-     TASK 03: TIC-TAC-TOE WEB APPLICATION
-     ========================================= */
+ 
   const boardCells = document.querySelectorAll('.cell');
   const gameStatusText = document.getElementById('game-status');
   const resetGameBtn = document.getElementById('game-reset');
@@ -168,16 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let gameState = ['', '', '', '', '', '', '', '', ''];
   let gameActive = true;
-  let currentPlayer = 'X'; // Player X starts
+  let currentPlayer = 'X'; 
   let scores = { X: 0, O: 0, draws: 0 };
 
   const winningCombinations = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6]             // Diagonals
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+    [0, 4, 8], [2, 4, 6]            
   ];
 
-  // Display drop-down for AI difficulty only if mode is set to AI
+  
   gameModeSelect.addEventListener('change', () => {
     if (gameModeSelect.value === 'ai') {
       aiDifficultySelect.style.display = 'block';
@@ -189,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   aiDifficultySelect.addEventListener('change', resetGame);
 
-  // Handle cell click from User
+ 
   boardCells.forEach(cell => {
     cell.addEventListener('click', () => {
       const cellIndex = parseInt(cell.getAttribute('data-index'));
@@ -200,19 +183,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (checkWin(currentPlayer)) {
         endGame(currentPlayer);
-      } else if (checkDraw()) {
+      } else if (checkDraw()) {     
         endGame('draw');
       } else {
-        // Toggle Turn
+       
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         gameStatusText.textContent = `Player ${currentPlayer}'s turn`;
 
-        // If computer AI mode is active and it is Player O's turn
+        
         if (gameModeSelect.value === 'ai' && currentPlayer === 'O' && gameActive) {
-          gameActive = false; // Temporarily lock board during AI decision
+          gameActive = false; 
           setTimeout(() => {
             triggerAIMove();
-          }, 450); // Small realistic delay for UI satisfaction
+          }, 450); 
         }
       }
     });
@@ -284,16 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Minimax Algorithm implementation
+  
   function getBestMoveMinimax() {
     let bestScore = -Infinity;
     let move;
     
     for (let i = 0; i < 9; i++) {
       if (gameState[i] === '') {
-        gameState[i] = 'O'; // Test move
+        gameState[i] = 'O'; 
         let score = minimax(gameState, 0, false);
-        gameState[i] = '';  // Undo move
+        gameState[i] = ''; 
         if (score > bestScore) {
           bestScore = score;
           move = i;
@@ -304,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function minimax(board, depth, isMaximizing) {
-    // Terminal state checking
+    
     if (checkWinState(board, 'O')) return 10 - depth;
     if (checkWinState(board, 'X')) return depth - 10;
     if (board.every(cell => cell !== '')) return 0;
@@ -334,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Helper check win function specifically for minimax simulation
+  
   function checkWinState(board, player) {
     return winningCombinations.some(combination => {
       return combination.every(index => board[index] === player);
@@ -356,16 +339,14 @@ document.addEventListener('DOMContentLoaded', () => {
   resetGameBtn.addEventListener('click', resetGame);
 
 
-  /* =========================================
-     TASK 04: TO-DO WEB APPLICATION WITH LOCALSTORAGE
-     ========================================= */
+  
   const todoForm = document.getElementById('todo-form');
   const todoTitleInput = document.getElementById('todo-title');
   const todoDateTimeInput = document.getElementById('todo-datetime');
   const todoList = document.getElementById('todo-list');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
-  // Load tasks from LocalStorage
+  
   let tasks = JSON.parse(localStorage.getItem('sct_tasks')) || [];
   let currentFilter = 'all';
 
@@ -376,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTasks() {
     todoList.innerHTML = '';
     
-    // Filter logic
+    
     let filteredTasks = tasks;
     if (currentFilter === 'active') {
       filteredTasks = tasks.filter(t => !t.completed);
@@ -384,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
       filteredTasks = tasks.filter(t => t.completed);
     }
 
-    // Sort tasks: Incomplete task with earliest deadline first, completed last
+    
     filteredTasks.sort((a, b) => {
       if (a.completed !== b.completed) {
         return a.completed ? 1 : -1;
@@ -409,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const li = document.createElement('li');
       li.className = `todo-item ${task.completed ? 'completed' : ''}`;
       
-      // Formatting date time label
+      
       let dateLabel = '';
       if (task.datetime) {
         const d = new Date(task.datetime);
@@ -440,20 +421,20 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Event listener for checking completeness
+      
       li.querySelector('.todo-checkbox').addEventListener('change', (e) => {
         const id = parseInt(e.target.getAttribute('data-id'));
         toggleTaskComplete(id);
       });
 
-      // Event listener for editing
+      
       li.querySelector('.edit-btn').addEventListener('click', (e) => {
         const button = e.currentTarget;
         const id = parseInt(button.getAttribute('data-id'));
         editTask(id);
       });
 
-      // Event listener for deletion
+      
       li.querySelector('.delete-btn').addEventListener('click', (e) => {
         const button = e.currentTarget;
         const id = parseInt(button.getAttribute('data-id'));
@@ -464,14 +445,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Escape HTML to prevent XSS issues
+  
   function escapeHTML(str) {
     return str.replace(/[&<>'"]/g, 
       tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
     );
   }
 
-  // Add a Task handler
+  
   todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const title = todoTitleInput.value.trim();
@@ -490,12 +471,12 @@ document.addEventListener('DOMContentLoaded', () => {
     saveTasks();
     renderTasks();
 
-    // Reset Inputs
+    
     todoTitleInput.value = '';
     todoDateTimeInput.value = '';
   });
 
-  // Toggle complete
+  
   function toggleTaskComplete(id) {
     tasks = tasks.map(task => {
       if (task.id === id) {
@@ -507,13 +488,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
   }
 
-  // Edit Task
+  
   function editTask(id) {
     const task = tasks.find(t => t.id === id);
     if (!task) return;
 
     const newTitle = prompt('Edit your task title:', task.title);
-    if (newTitle === null) return; // Cancel pressed
+    if (newTitle === null) return; 
     
     const trimmedTitle = newTitle.trim();
     if (trimmedTitle === '') {
@@ -526,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
   }
 
-  // Delete Task
+  
   function deleteTask(id) {
     if (confirm('Are you sure you want to delete this task?')) {
       tasks = tasks.filter(task => task.id !== id);
@@ -535,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Filter selection handler
+  
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       filterBtns.forEach(b => b.classList.remove('active'));
@@ -545,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Initial load execution
+  
   renderTasks();
 
 });
