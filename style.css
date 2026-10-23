@@ -1,16 +1,6 @@
-/* 
-  =========================================
-  SCT PROJECTS HUB - MAIN STYLESHEET
-  =========================================
-  This stylesheet is written using simple, standard vanilla CSS.
-  It uses CSS variables for colors, flexbox/grid for layouts,
-  and smooth transitions for hover effects.
-*/
-
-/* Import a modern, high-quality Google font */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;700&display=swap');
 
-/* Define color themes and variables for easy customization */
+
 :root {
   --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
   --bg-color: #0b0f19;
@@ -18,12 +8,12 @@
   --card-border: rgba(255, 255, 255, 0.08);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --primary: #6366f1;       /* Indigo */
+  --primary: #6366f1;      
   --primary-hover: #4f46e5;
-  --secondary: #ec4899;     /* Pink Accent */
-  --accent: #10b981;        /* Success Green */
-  --warning: #f59e0b;       /* Gold/Yellow */
-  --danger: #ef4444;        /* Danger Red */
+  --secondary: #ec4899;     
+  --accent: #10b981;       
+  --warning: #f59e0b;       
+  --danger: #ef4444;        
   --nav-bg: rgba(15, 23, 42, 0.75);
   --nav-scrolled: rgba(11, 15, 25, 0.95);
   
@@ -34,7 +24,7 @@
   --radius: 16px;
 }
 
-/* Global Reset Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -55,7 +45,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar for modern look */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -70,14 +60,14 @@ body {
   background: rgba(99, 102, 241, 0.7);
 }
 
-/* Base Layout and Container styling */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Header & Interactive Navigation Menu (Task 01) */
+
 header {
   position: fixed;
   top: 0;
@@ -88,7 +78,7 @@ header {
   border-bottom: 1px solid transparent;
 }
 
-/* Style applied via JS when user scrolls down */
+
 header.scrolled {
   background: var(--nav-scrolled);
   backdrop-filter: blur(12px);
@@ -139,7 +129,7 @@ header.scrolled .navbar {
   color: var(--text-main);
 }
 
-/* CSS transition effect for hover underlines */
+
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -156,7 +146,7 @@ header.scrolled .navbar {
   width: 100%;
 }
 
-/* Hamburger menu for mobile navigation */
+
 .menu-btn {
   display: none;
   flex-direction: column;
@@ -173,7 +163,7 @@ header.scrolled .navbar {
   transition: var(--transition);
 }
 
-/* Toggle menu button states for active hamburger */
+
 .menu-btn.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
 }
@@ -184,7 +174,7 @@ header.scrolled .navbar {
   transform: rotate(-45deg) translate(5px, -6px);
 }
 
-/* Hero Section / Welcome banner */
+
 #home {
   padding-top: 150px;
   padding-bottom: 80px;
@@ -207,7 +197,7 @@ header.scrolled .navbar {
   overflow: hidden;
 }
 
-/* Decorative backdrop glowing balls */
+
 .hero-box::before {
   content: '';
   position: absolute;
@@ -276,7 +266,7 @@ header.scrolled .navbar {
   flex-wrap: wrap;
 }
 
-/* Beautiful custom buttons */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -317,7 +307,7 @@ header.scrolled .navbar {
   transform: translateY(-2px);
 }
 
-/* Common Section Layout */
+
 .section {
   padding: 100px 0;
   min-height: 100vh;
@@ -343,7 +333,7 @@ header.scrolled .navbar {
   font-size: 16px;
 }
 
-/* App Glassmorphic Containers */
+
 .app-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -356,9 +346,7 @@ header.scrolled .navbar {
   width: 100%;
 }
 
-/* =========================================
-   TASK 02 - STOPWATCH WEB APPLICATION
-   ========================================= */
+
 .stopwatch-wrapper {
   text-align: center;
 }
@@ -417,9 +405,7 @@ header.scrolled .navbar {
   color: var(--secondary);
 }
 
-/* =========================================
-   TASK 03 - TIC-TAC-TOE WEB APPLICATION
-   ========================================= */
+
 .game-controls {
   display: flex;
   justify-content: space-between;
@@ -527,9 +513,7 @@ header.scrolled .navbar {
   justify-content: center;
 }
 
-/* =========================================
-   TASK 04 - TO-DO WEB APPLICATION
-   ========================================= */
+
 .todo-form {
   display: flex;
   flex-direction: column;
@@ -719,9 +703,7 @@ header.scrolled .navbar {
   color: var(--danger);
 }
 
-/* =========================================
-   FOOTER
-   ========================================= */
+
 footer {
   text-align: center;
   padding: 40px 0;
@@ -730,9 +712,7 @@ footer {
   font-size: 14px;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN (Media Queries)
-   ========================================= */
+
 @media (max-width: 768px) {
   .menu-btn {
     display: flex;
